@@ -8,7 +8,6 @@ export default function Api() {
   const Context = useContext(GlobalContext);
   const [state, setState] = useState([]);
   const [users, setUsers] = useState([]);
-  const [search, setSearch] = useState({ search: "" });
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users", {

@@ -10,8 +10,6 @@ It is a React JS project to fecth users API, search, and access their details th
 
 - Routes
 
-- Private Routes
-
 - React Hooks: useState, useEffect, useContext
 
 - Fetch
