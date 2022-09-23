@@ -15,17 +15,29 @@ export default function Details(props) {
 
   return (
     <>
-      <div>
-        {states.map((item, i) => {
-          return (
-            <div key={i}>
-              <p>{item.address.city}</p>
-              <p>{item.address.street}</p>
-              <p>{item.address.suite}</p>
-              <p>{item.address.zipcode}</p>
-            </div>
-          );
-        })}
+      <div className="table-responsive-md">
+        <table className="table table-bordered table-hover table-striped table-info">
+          <thead>
+            <tr className="tr">
+              <th scope="col">City</th>
+              <th scope="col">Street</th>
+              <th scope="col">Suite</th>
+              <th scope="col">ZipCode</th>
+            </tr>
+          </thead>
+          <tbody>
+            {states.map((item, i) => {
+              return (
+                <tr>
+                  <td>{item.address.city}</td>
+                  <td>{item.address.street}</td>
+                  <td>{item.address.suite}</td>
+                  <td>{item.address.zipcode}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
     </>
   );

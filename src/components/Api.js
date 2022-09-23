@@ -61,45 +61,44 @@ export default function Api() {
   };
 
   return (
-    <div style={{ height: "100vh" }}>
-      <div className="con">
-        <input type="text" placeholder="Search" onChange={handleOnChange} />
-        <table>
-          <thead>
+    <div className="table-responsive-md">
+      <input type="text" placeholder="Search" onChange={handleOnChange} />
+      <table className="table table-bordered table-hover table-striped table-info">
+        <thead>
+          <tr className="tr">
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {state.length > 0 &&
+            state.map((item, i) => {
+              return (
+                <tr onClick={(e) => rowDetails(e, item)} key={i}>
+                  <td>
+                    <Link to={"/details/" + `${item.id}`}>{item.id}</Link>
+                  </td>
+                  <td>{item.name}</td>
+                  <td>{item.username}</td>
+                  <td>{item.email}</td>
+                </tr>
+              );
+            })}
+          {!state.length && (
             <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Username</th>
-              <th>Email</th>
+              <td colSpan={4}>No Records Found</td>
             </tr>
-          </thead>
-          <tbody>
-            {state.length > 0 &&
-              state.map((item, i) => {
-                return (
-                  <tr onClick={(e) => rowDetails(e, item)} key={i}>
-                    <Link to={"/details/" + `${item.id}`}>
-                      <td>{item.id}</td>{" "}
-                    </Link>
-                    <td>{item.name}</td>
-                    <td>{item.username}</td>
-                    <td>{item.email}</td>
-                  </tr>
-                );
-              })}
-            {!state.length && (
-              <tr>
-                <td colSpan={4}>No Records Found</td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
-      {Context.id && (
+          )}
+        </tbody>
+      </table>
+
+      {/* {Context.id && (
         <div className="con">
           <Details />
         </div>
-      )}
+      )} */}
     </div>
   );
 }
